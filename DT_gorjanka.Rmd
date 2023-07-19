@@ -13,15 +13,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-In this table the product of tesseract OCR util applied to the collection of PDFs of the "Woman of Dagestan" magazine. See details about the project and implemented tools [in the github repository](https://github.com/LingConLab/zhenshchina_dagestana_magazine_parallel_corpus).
+In this table the product of tesseract OCR engine applied to the collection of PDFs of the "Woman of Dagestan" magazine. See details about the project and implemented tools [in the github repository](https://github.com/LingConLab/zhenshchina_dagestana_magazine_parallel_corpus). At the moment, the page works very slowly but it works. Filtering options are disabled. Texts in languages with the "palochka" sign are recognised poorly sometimes.
 
-With the corresponding buttons below you can copy to clipboard and export to csv or excel currently filtered table.
+With the corresponding buttons below you can copy to clipboard and export to .csv or .xlsx the table.
 
-Known issues:
 
-- The table is large. At the moment, it loads *SLOWLY, BUT IT WORKS*, be patient, please.
-
-- There is no palochka in the OCR model, thus texts on languages with this sign in the inventory are looking weird.
 
 ```{r setup, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
@@ -32,9 +28,9 @@ db <- read_csv('parallel_texts_table.csv')
 
 ```{r}
 db %>% 
-  datatable(filter = 'top',
+  datatable(#filter = 'top',
             extensions = 'Buttons',
-            plugins = "accent-neutralise", # works with BOTH "comibining acute accent" with cyrillic and combining macron
+            #plugins = "accent-neutralise",
             rownames = F,
             options = list(pageLength = 10, 
                            dom = 'Btip',
