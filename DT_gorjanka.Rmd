@@ -13,9 +13,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-In this table the product of tesseract OCR engine applied to the collection of PDFs of the "Woman of Dagestan" magazine. See details about the project and implemented tools [in the github repository](https://github.com/LingConLab/zhenshchina_dagestana_magazine_parallel_corpus). At the moment, the page works very slowly but it works. Filtering options are disabled. Texts in languages with the "palochka" sign are recognised poorly sometimes.
+In this table the product of tesseract OCR engine applied to the collection of PDFs of the "Woman of Dagestan" magazine. See details about the project and implemented tools [in the readme of the github repository](https://github.com/LingConLab/zhenshchina_dagestana_magazine_parallel_corpus). At the moment, the page works very slowly but it works. Filtering by columns is disabled. Overall search is enabled. Texts in languages with the "paločka" sign are recognised poorly sometimes (e.g. paločka can be identified as "!","1" etc. or spoil other letters).
 
-With the corresponding buttons below you can copy to clipboard and export to .csv or .xlsx the table.
+With the corresponding buttons below you can copy the table to clipboard and export to .csv or .xlsx. The "search" box below can be used for quick filtering.
 
 
 
@@ -30,10 +30,11 @@ db <- read_csv('parallel_texts_table.csv')
 db %>% 
   datatable(#filter = 'top',
             extensions = 'Buttons',
-            #plugins = "accent-neutralise",
+            plugins = "accent-neutralise",
             rownames = F,
+            autoHideNavigation = F,
             options = list(pageLength = 10, 
-                           dom = 'Btip',
+                           dom = 'Bftp',
                            buttons = c('copy','csv','excel')
                            ))
 ```
